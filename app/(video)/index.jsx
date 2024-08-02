@@ -8,7 +8,7 @@ import { useSafeAreaInsets } from "react-native-safe-area-context";
 import Grid from "../../assets/Icons/grid.svg";
 import List from "../../assets/Icons/list.svg";
 import AbcNews from "../../assets/images/abcNews.png";
-import GridView from "../../components/GirdView"; // Adjust the import path as needed
+import GridView from "../../components/GirdView";
 import ListView from "../../components/ListView";
 
 
@@ -50,15 +50,24 @@ function VideoScreen() {
   const [searchText, setSearchText] = useState("");
   const [favoriteChannels, setFavoriteChannels] = useState([]);
   const insets = useSafeAreaInsets();
-  const [selectedItems, setSelectedItems] = useState([]); // Initialize as an empty array
+  const [selectedItems, setSelectedItems] = useState([]); 
   const navigation = useNavigation();
 
   const route = useRoute();
-  const { title, id } = route.params || {}; // Access parameters here
-
-  // Debugging: Log the parameters to see their values
+  const  {title, id} = route.params || {}; 
   console.log("VideoScreen title:", title);
 
+
+
+  const handleFavoritePress = (item) => {
+    setSelectedItems((prevSelectedItems) =>
+      prevSelectedItems.some((selectedItem) => selectedItem.id === item.id)
+        ? prevSelectedItems.filter((selectedItem) => selectedItem.id !== item.id)
+        : [...prevSelectedItems, item]
+    );
+  };
+
+  
    return (
     <SafeAreaView style={styles.container}>
       <View>
@@ -80,7 +89,7 @@ function VideoScreen() {
         <View style={styles.infoContainer}>
           <View style={styles.infoContent}>
             <View>
-              <Text style={{ fontSize: 16, fontWeight: '500', color: "#3628B7" }}>{title} </Text>
+              <Text style={{ fontSize: 16, fontWeight: '500', color: "#3628B7" }}>Video Title: {title} </Text>
               <Text style={{ fontSize: 10, color: "#A4A4A4", fontWeight: '400' }}>USA</Text>
             </View>
             <TouchableOpacity>
@@ -98,7 +107,7 @@ function VideoScreen() {
         </View>
         <View style={styles.headerStyle}>
           <View>
-            <Text style={{ fontSize: 18, color: "#3628B7", fontWeight: '500' }}>Related Channel</Text>
+            <Text style={{ fontSize: 18, color: "#3628B7", fontWeight: 'bold' }}>Related Channel</Text>
           </View>
           <View style={styles.iconContainer}>
             <TouchableOpacity
