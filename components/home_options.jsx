@@ -222,18 +222,18 @@ import {
 export default function HomeOptions({ data, viewMode }) {
   const navigation = useNavigation();
 
-  const handlePress = () => {
-    console.log('Navigating to (video) with title:', data.title); 
-    navigation.navigate('(video)', { title: data.title, id: data.id });
-  };
+  // const handlePress = () => {
+  //   console.log('Navigating to (video) with title:', data.title); 
+  //   navigation.navigate('(video)', { title: data.title, id: data.id });
+  // };
 
-  if (!data) {
-    return null;
-  }
+  // if (!data) {
+  //   return null;
+  // }
 
   return (
     <SafeAreaView>
-      <Pressable onPress={handlePress}>
+      <Pressable onPress={() => navigation.navigate('(video)', { title: data.title })}  >
         <View
           style={
             viewMode === "grid" ? styles.gridItemContainer : styles.container

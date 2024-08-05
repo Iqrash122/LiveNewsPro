@@ -5,8 +5,11 @@ import {
 } from "@expo/vector-icons";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Link } from "expo-router";
-import { useEffect, useState } from "react";
-import ProfileModal from "../../../components/ProfileModal";
+import { useContext, useEffect, useState } from "react";
+import { EventRegister } from 'react-native-event-listeners';
+
+
+
 
 import {
   Image,
@@ -26,7 +29,6 @@ import Price from "../../../assets/Icons/price.svg";
 // import ProfileImage from '../../../assets/Icons/profileImage.svg';
 
 import * as ImagePicker from "expo-image-picker";
-import { useTheme } from "../../../app/ThemeContext";
 
 const Profile = () => {
   const [selectedImage, setSelectedImage] = useState(null);
@@ -39,16 +41,15 @@ const Profile = () => {
   const [email, setEmail] = useState("iqrashahamd218@gmail.com");
   const [date, setDate] = useState("2022-05-01");
   // const [image, setImage] = useState('https://example.com/profile.jpg');
-  const { colors, isDarkMode, toggleTheme } = useTheme();
 
-  const colorScheme = isEnabled ? "dark" : systemColorScheme;
+  // const colorScheme = isEnabled ? "dark" : systemColorScheme;
 
-  const themeTextStyle =
-    colorScheme === "light" ? styles.lightThemeText : styles.darkThemeText;
-  const themeContainerStyle =
-    colorScheme === "light" ? styles.lightContainer : styles.darkContainer;
+  // const themeTextStyle =
+  //   colorScheme === "light" ? styles.lightThemeText : styles.darkThemeText;
+  // const themeContainerStyle =
+  //   colorScheme === "light" ? styles.lightContainer : styles.darkContainer;
 
-  const toggleSwitch = () => setIsEnabled((previousState) => !previousState);
+  // const toggleSwitch = () => setIsEnabled((previousState) => !previousState);
 
   useEffect(() => {
     // Load the saved image URI when the app starts
@@ -87,6 +88,9 @@ const Profile = () => {
       }
     }
   };
+
+  const [darkMode, setDarkMode] = useState(false);
+  const theme = useContext(themeContext)
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
@@ -432,10 +436,14 @@ const Profile = () => {
               <View style={{ justifyContent: "center", alignItems: "center" }}>
                 <Switch
                   trackColor={{ false: "#767577", true: "#3628B7" }}
-                  thumbColor={isDarkMode ? "white" : "#f4f3f4"}
+                  thumbColor={darkMode ? "white" : "#f4f3f4"}
                   ios_backgroundColor="#3e3e3e"
-                  onValueChange={toggleTheme}
-                  value={isDarkMode}
+                  value={darkMode}
+                  onValueChange={(value) => {
+                    setDarkMode(value);
+                    EventRegister.emit('ChangeTheme', value)
+
+                  }}
                 />
               </View>
             </View>

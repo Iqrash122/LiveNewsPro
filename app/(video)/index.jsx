@@ -1,5 +1,5 @@
 import { AntDesign, MaterialIcons } from "@expo/vector-icons";
-import { useNavigation, useRoute } from "@react-navigation/native";
+import { useNavigation } from "@react-navigation/native";
 import { ResizeMode, Video } from "expo-av";
 import { Link } from "expo-router";
 import React, { useState } from "react";
@@ -43,7 +43,7 @@ const homeContent = [
   
 ];
 
-function VideoScreen() {
+function VideoScreen({route}) {
   const [viewMode, setViewMode] = useState("list");
   const [overlayVisible, setOverlayVisible] = useState(true);
   const [filteredHomeContent, setFilteredHomeContent] = useState(homeContent);
@@ -53,10 +53,9 @@ function VideoScreen() {
   const [selectedItems, setSelectedItems] = useState([]); 
   const navigation = useNavigation();
 
-  const route = useRoute();
-  const  {title, id} = route.params || {}; 
-  console.log("VideoScreen title:", title);
+  
 
+  const {title} = route.params;
 
 
   const handleFavoritePress = (item) => {
