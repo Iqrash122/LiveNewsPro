@@ -8,79 +8,128 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import Grid from '../../../assets/Icons/grid.svg';
 import List from '../../../assets/Icons/list.svg';
 import AbcNews from '../../../assets/images/abcNews.png';
-import GridView from '../../../components/GirdView'; // Adjust the import path as needed
-import ListView from '../../../components/ListView'; // Adjust the import path as needed
+import GridView from '../../../components/GirdView';
+import ListView from '../../../components/ListView';
+
 const homeContent = [
   {
     id: 1,
-    image1: AbcNews,
+    image1: 'https://livenewspro.com/wp-content/uploads/2022/04/ABC-News-2.png',
     title: 'ABC News',
-    videoUrl:""
+    videoUrl:'https://content.uplynk.com/channel/3324f2467c414329b3b0cc5cd987b6be.m3u8'
   },
   {
     id: 2,
-    image1: AbcNews,
-    title: 'ABC News',
-    videoUrl:""
+    image1: 'https://livenewspro.com/wp-content/uploads/2022/04/AL-JAZEERA.png',
+    title: 'AL JAZEERA',
+    videoUrl:"https://live-hls-web-aje.getaj.net/AJE/index.m3u8"
 
   },
   {
     id: 3,
     image1: AbcNews,
-    title: 'ABC News',
-    videoUrl:""
+    title: 'BBC News',
+    videoUrl:"https://watchnews.pro/wp-content/streamings/bbcz.php?file=playlist.m3u8"
 
   },
   {
     id: 4,
     image1: AbcNews,
-    title: 'ABC News',
-    videoUrl:""
+    title: 'Bloomberg',
+    videoUrl:"https://liveprodusphoenixeast.global.ssl.fastly.net/USPhx-HD/Channel-TX-USPhx-AWS-virginia-1/Source-USPhx-16k-1-s6lk2-BP-07-03-0Yn1cQZHOtP_live.m3u8"
 
   },
   {
     id: 5,
     image1: AbcNews,
-    title: 'ABC News',
-    videoUrl:""
+    title: 'C-SPAN',
+    videoUrl:"https://www.watchnews.pro/wp-content/streamings/cspanapp.php?file=index.m3u8"
 
   },
   {
     id: 6,
     image1: AbcNews,
-    title: 'ABC News',
-    videoUrl:""
+    title: 'CBC',
+    videoUrl:"https://www.watchnews.pro/wp-content/streamings/cbcapp.php?file=index.m3u8"
 
   },
   {
     id: 7,
     image1: AbcNews,
-    title: 'CNN News',
-    videoUrl:""
+    title: 'CBS News',
+    videoUrl:"https://www.cbsnews.com/common/video/cbsn-ny-prod.m3u8"
 
   },
   {
     id: 8,
     image1: AbcNews,
-    title: 'CNN News',
-    videoUrl:""
+    title: 'CNBC News',
+    videoUrl:"https://www.watchnews.pro/wp-content/streamings/cnbcapp.php?file=playlist.m3u8"
 
   },
   {
     id: 9,
     image1: AbcNews,
     title: 'CNN News',
-    videoUrl:""
+    videoUrl:"https://www.watchnews.pro/wp-content/streamings/cnnappz.php?file=playlist.m3u8\t"
 
   },
   {
     id: 10,
     image1: AbcNews,
-    title: 'CNN News',
-    videoUrl:""
+    title: 'FOX Business',
+    videoUrl:"https://www.watchnews.pro/wp-content/streamings/foxbusz.php?file=index.m3u8"
     
 
   },
+  {
+    id: 11,
+    image1: AbcNews,
+    title: 'Fox News',
+    videoUrl:"https://www.watchnews.pro/wp-content/streamings/foxyapp.php?file=playlist.m3u8"   
+
+  },
+
+  {
+    id: 12,
+    image1: AbcNews,
+    title: 'HLN',
+    videoUrl:"https://turnerlive.warnermediacdn.com/hls/live/586496/cnngo/hln/VIDEO_0_3564000.m3u8"   
+
+  },
+
+  {
+    id: 13,
+    image1: AbcNews,
+    title: 'MSNBC',
+    videoUrl:"https://www.watchnews.pro/wp-content/streamings/msnbcz.php?file=playlist.m3u8"   
+
+  },
+
+  {
+    id: 14,
+    image1: AbcNews,
+    title: 'One America',
+    videoUrl:"https://www.watchnews.pro/wp-content/streamings/oanapp.php?file=playlist.m3u8"   
+
+  },
+
+  {
+    id: 15,
+    image1: AbcNews,
+    title: 'The Weather',
+    videoUrl:"https://www.watchnews.pro/wp-content/streamings/weather.php?file=index.m3u8"   
+
+  },
+
+  {
+    id: 16,
+    image1: AbcNews,
+    title: 'Weather Nation',
+    videoUrl:"https://live-news-manifest.tubi.video/live-news-manifest/csm/extlive/tubiprd01,Cloudfront-Weather-Nation.m3u8"   
+
+  },
+  
   
 ];
 

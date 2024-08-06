@@ -6,13 +6,12 @@ import { Link, useLocalSearchParams } from "expo-router";
 import React, { useEffect, useState } from "react";
 
 import {
-    SafeAreaView,
-    ScrollView,
-    StyleSheet,
-    Text,
-    TouchableOpacity,
-    TouchableWithoutFeedback,
-    View
+  SafeAreaView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  TouchableWithoutFeedback,
+  View
 } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import Grid from "../../../assets/Icons/grid.svg";
@@ -63,8 +62,8 @@ function VideoScreen() {
   const navigation = useNavigation();
 
   // const { videoUrl } = route.params;
-  const { id, title, image } = useLocalSearchParams();
-  console.log({ id, title, image });
+  const { id, title, image, videoUrl } = useLocalSearchParams();
+  console.log({ id, title, image, videoUrl });
 
   useEffect(() => {
     const loadSelectedItems = async () => {
@@ -102,7 +101,7 @@ function VideoScreen() {
     setSelectedItems(updatedSelectedItems);
 
     if (!isSelected) {
-      navigation.navigate("favorite", { id: item.id, title: item.title, image: item.image });
+      navigation.navigate("favorite", { id: item.id, title: item.title, image: item.image, videoUrl });
     }
   };;
 
@@ -112,8 +111,8 @@ function VideoScreen() {
         <TouchableWithoutFeedback>
           <View style={{ height: 225, marginTop: 40 }}>
             <Video
-              style={styles.video}
-              source={{ uri: videoSource }}
+              style={ styles.video}
+              source={{ uri: videoUrl }}
               useNativeControls
               resizeMode={ResizeMode.CONTAIN}
               shouldPlay
@@ -187,7 +186,7 @@ function VideoScreen() {
             </TouchableOpacity>
           </View>
         </View>
-        <ScrollView>
+        
             
         <View style={styles.flatList}>
           {viewMode === "grid" ? (
@@ -196,7 +195,7 @@ function VideoScreen() {
             <ListView data={filteredHomeContent} viewMode={viewMode} />
           )}
         </View>
-        </ScrollView>
+        
       </View>
     </SafeAreaView>
   );

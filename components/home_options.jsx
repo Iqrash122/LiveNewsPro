@@ -2,7 +2,7 @@
 
 import { FontAwesome } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import {
   Image,
   Pressable,
@@ -18,18 +18,12 @@ export default function HomeOptions({ data, viewMode }) {
 
   const handlePress = () => {
     console.log("Navigating to video with title:", data.title, data.id, data.image1);
-    navigation.navigate("VideoScreen", { title: data.title, id: data.id, image:data.image1 });
+    navigation.navigate("VideoScreen", { title: data.title, id: data.id, image:data.image1, videoUrl: data.videoUrl });
   };
 
 
   
 
-  useEffect(() => {
-    fetch('https://www.watchnews.pro/wp-content/streamings/cbcapp.php?file=index.m3u8')
-      .then(response => response.json())
-      .then(data => setChannels(data))
-      .catch(error => console.error("cheeeen dama dam dam"));
-  }, []);
 
   return (
     <SafeAreaView>
