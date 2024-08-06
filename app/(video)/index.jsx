@@ -1,7 +1,7 @@
 import { AntDesign, MaterialIcons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import { ResizeMode, Video } from "expo-av";
-import { Link } from "expo-router";
+import { Link, useLocalSearchParams } from "expo-router";
 import React, { useState } from "react";
 import { SafeAreaView, StyleSheet, Text, TouchableOpacity, TouchableWithoutFeedback, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
@@ -10,7 +10,6 @@ import List from "../../assets/Icons/list.svg";
 import AbcNews from "../../assets/images/abcNews.png";
 import GridView from "../../components/GirdView";
 import ListView from "../../components/ListView";
-
 
 const videoSource = "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4";
 
@@ -43,7 +42,7 @@ const homeContent = [
   
 ];
 
-function VideoScreen({route}) {
+function VideoScreen() {
   const [viewMode, setViewMode] = useState("list");
   const [overlayVisible, setOverlayVisible] = useState(true);
   const [filteredHomeContent, setFilteredHomeContent] = useState(homeContent);
@@ -53,9 +52,11 @@ function VideoScreen({route}) {
   const [selectedItems, setSelectedItems] = useState([]); 
   const navigation = useNavigation();
 
-  
+  // const { videoUrl } = route.params;
 
-  const {title} = route.params;
+
+  
+ 
 
 
   const handleFavoritePress = (item) => {
@@ -66,7 +67,8 @@ function VideoScreen({route}) {
     );
   };
 
-  
+  const { id, title } = useLocalSearchParams()
+  console.log({id, title});
    return (
     <SafeAreaView style={styles.container}>
       <View>
@@ -88,7 +90,7 @@ function VideoScreen({route}) {
         <View style={styles.infoContainer}>
           <View style={styles.infoContent}>
             <View>
-              <Text style={{ fontSize: 16, fontWeight: '500', color: "#3628B7" }}>Video Title: {title} </Text>
+              <Text style={{ fontSize: 16, fontWeight: '500', color: "#3628B7" }}>Video Title {title} </Text>
               <Text style={{ fontSize: 10, color: "#A4A4A4", fontWeight: '400' }}>USA</Text>
             </View>
             <TouchableOpacity>

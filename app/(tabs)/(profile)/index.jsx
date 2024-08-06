@@ -5,12 +5,9 @@ import {
 } from "@expo/vector-icons";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Link } from "expo-router";
-import { useContext, useEffect, useState } from "react";
-import { EventRegister } from 'react-native-event-listeners';
+import { useEffect, useState } from "react";
 
-
-
-
+import * as ImagePicker from "expo-image-picker";
 import {
   Image,
   SafeAreaView,
@@ -26,9 +23,7 @@ import Duration from "../../../assets/Icons/duration.svg";
 import ExpireDate from "../../../assets/Icons/expireDate.svg";
 import MemberShip from "../../../assets/Icons/membership.svg";
 import Price from "../../../assets/Icons/price.svg";
-// import ProfileImage from '../../../assets/Icons/profileImage.svg';
-
-import * as ImagePicker from "expo-image-picker";
+import ProfileModal from '../../../components/ProfileModal';
 
 const Profile = () => {
   const [selectedImage, setSelectedImage] = useState(null);
@@ -40,19 +35,9 @@ const Profile = () => {
   const [name, setName] = useState("Iqrash ahmad");
   const [email, setEmail] = useState("iqrashahamd218@gmail.com");
   const [date, setDate] = useState("2022-05-01");
-  // const [image, setImage] = useState('https://example.com/profile.jpg');
 
-  // const colorScheme = isEnabled ? "dark" : systemColorScheme;
-
-  // const themeTextStyle =
-  //   colorScheme === "light" ? styles.lightThemeText : styles.darkThemeText;
-  // const themeContainerStyle =
-  //   colorScheme === "light" ? styles.lightContainer : styles.darkContainer;
-
-  // const toggleSwitch = () => setIsEnabled((previousState) => !previousState);
 
   useEffect(() => {
-    // Load the saved image URI when the app starts
     const loadImage = async () => {
       try {
         const savedImage = await AsyncStorage.getItem("userImage");
@@ -90,7 +75,6 @@ const Profile = () => {
   };
 
   const [darkMode, setDarkMode] = useState(false);
-  const theme = useContext(themeContext)
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
@@ -441,8 +425,7 @@ const Profile = () => {
                   value={darkMode}
                   onValueChange={(value) => {
                     setDarkMode(value);
-                    EventRegister.emit('ChangeTheme', value)
-
+                   
                   }}
                 />
               </View>

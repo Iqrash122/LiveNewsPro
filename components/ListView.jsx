@@ -1,21 +1,3 @@
-// // import React from 'react';
-// // import { FlatList, StyleSheet, View } from 'react-native';
-// // import HomeOptions from '../../livenewspro/components/home_options';
-
-// // const ListView = ({ data, viewMode }) => (
-// //   <FlatList
-// //     data={data}
-// //     renderItem={({ item }) => (
-// //       <View style={styles.listItem}>
-// //         <HomeOptions data={item} viewMode={viewMode} />
-// //       </View>
-// //     )}
-// //     keyExtractor={(item) => item.id.toString()}
-// //     contentContainerStyle={styles.scrollViewContent}
-// //   />
-// // );
-
-
 // import React from 'react';
 // import { FlatList, StyleSheet, TouchableOpacity } from 'react-native';
 // import HomeOptions from '../../livenewspro/components/home_options';
@@ -23,7 +5,6 @@
 // const ListView = ({ data, viewMode, onPress }) => (
 //   <FlatList
 //     data={data}
-    
 //     renderItem={({ item }) => (
 //       <TouchableOpacity style={styles.listItem} onPress={() => onPress(item)}>
 //         <HomeOptions data={item} viewMode={viewMode} />
@@ -33,7 +14,6 @@
 //     contentContainerStyle={styles.scrollViewContent}
 //   />
 // );
-
 
 // const styles = StyleSheet.create({
 //   listItem: {
@@ -45,8 +25,6 @@
 // });
 
 // export default ListView;
-
-
 
 
 
@@ -63,7 +41,7 @@ const ListView = ({ data, viewMode, onPress }) => (
         <HomeOptions data={item} viewMode={viewMode} />
       </TouchableOpacity>
     )}
-    keyExtractor={(item) => item.id.toString()}
+    keyExtractor={(item, index) => (item.id ? item.id.toString() : index.toString())}
     contentContainerStyle={styles.scrollViewContent}
   />
 );

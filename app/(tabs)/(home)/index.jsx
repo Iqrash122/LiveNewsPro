@@ -1,6 +1,6 @@
+import { StatusBar } from "expo-status-bar";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import HomeLayout from "./home";
-import { StatusBar } from "expo-status-bar";
 
 const Home = ()=>{
     return(

@@ -11,7 +11,7 @@
       "image": "./assets/images/splash.png",
       "resizeMode": "cover",
       "backgroundColor": "#ffffff",
-      "barStyle":"dark-content"
+      "barStyle":"white"
     },
     "ios": {
       "supportsTablet": true

@@ -1,29 +1,42 @@
-import { EvilIcons } from '@expo/vector-icons';
+// screens/Favorite.js
+import { EvilIcons } from "@expo/vector-icons";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import React, { useEffect, useState } from 'react';
-import { StyleSheet, Text, TextInput, TouchableOpacity, View, } from 'react-native';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { useRoute } from "@react-navigation/native";
+import React, { useEffect, useState } from "react";
+import {
+    StyleSheet,
+    Text,
+    TextInput,
+    TouchableOpacity,
+    View,
+} from "react-native";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
+import Grid from "../../../assets/Icons/grid.svg";
+import List from "../../../assets/Icons/list.svg";
+import GridView from "../../../components/GirdView";
+import ListView from "../../../components/ListView";
 
-import Grid from '../../../assets/Icons/grid.svg';
-import List from '../../../assets/Icons/list.svg';
-import GridView from '../../../components/GirdView';
-import ListView from '../../../components/ListView';
+const Favorite = () => {
+  //   const { id, title, image } = useLocalSearchParams || {};
+  //   console.log({ id, title, image });
 
+  // const route = useRoute();
+  const [selectedItems, setSelectedItems] = useState([]);
 
-const Favorite = ({ route }) => {
-  const [searchText, setSearchText] = useState('');
+  const route = useRoute(); // Get route object
+  const { id, title, image } = route.params || {}; // Access parameters
+  console.log("Route Parameters:", { id, title, image });
+
+  const [searchText, setSearchText] = useState("");
   const inset = useSafeAreaInsets();
-  const [viewMode, setViewMode] = useState('list');
+  const [viewMode, setViewMode] = useState("list");
   const [filteredHomeContent, setFilteredHomeContent] = useState([]);
   const [favoriteChannels, setFavoriteChannels] = useState([]);
-  // const { selectedItems } = route.params;
-
-
 
   useEffect(() => {
     const loadSelectedItems = async () => {
       try {
-        const storedItems = await AsyncStorage.getItem('selectedItems');
+        const storedItems = await AsyncStorage.getItem("selectedItems");
         if (storedItems) {
           setSelectedItems(JSON.parse(storedItems));
         }
@@ -164,19 +177,19 @@ export default Favorite;
 
 const styles = StyleSheet.create({
   headerStyle: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
     padding: 16,
   },
   iconButton: {
     padding: 8,
     borderRadius: 8,
-    backgroundColor: '#f0f0f0',
-    marginLeft:5
+    backgroundColor: "#f0f0f0",
+    marginLeft: 5,
   },
   activeIconButton: {
-    backgroundColor: '#3628B7',
+    backgroundColor: "#3628B7",
   },
   defaultContainer: {
     padding: 16,

@@ -15,51 +15,71 @@ const homeContent = [
     id: 1,
     image1: AbcNews,
     title: 'ABC News',
+    videoUrl:""
   },
   {
     id: 2,
     image1: AbcNews,
     title: 'ABC News',
+    videoUrl:""
+
   },
   {
     id: 3,
     image1: AbcNews,
     title: 'ABC News',
+    videoUrl:""
+
   },
   {
     id: 4,
     image1: AbcNews,
     title: 'ABC News',
+    videoUrl:""
+
   },
   {
     id: 5,
     image1: AbcNews,
     title: 'ABC News',
+    videoUrl:""
+
   },
   {
     id: 6,
     image1: AbcNews,
     title: 'ABC News',
+    videoUrl:""
+
   },
   {
     id: 7,
     image1: AbcNews,
     title: 'CNN News',
+    videoUrl:""
+
   },
   {
     id: 8,
     image1: AbcNews,
     title: 'CNN News',
+    videoUrl:""
+
   },
   {
     id: 9,
     image1: AbcNews,
     title: 'CNN News',
+    videoUrl:""
+
   },
   {
     id: 10,
     image1: AbcNews,
     title: 'CNN News',
+    videoUrl:""
+    
+
   },
   
 ];
@@ -86,11 +106,14 @@ const HomeLayout = () => {
 
   const handlePress = (item) => {
     console.log("Navigating with title:", item.title);
-    navigation.navigate(Video, {
+    navigation.navigate('VideoScreen', {
       id: item.id,
       title: item.title,
+      videoUrl: item.videoUrl,
+      image: item.image1
     });
   };
+
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <View
